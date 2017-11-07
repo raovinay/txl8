@@ -100,9 +100,9 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>com.google.appengine</groupId>
+                <groupId>com.google.cloud.tools</groupId>
                 <artifactId>appengine-maven-plugin</artifactId>
-                <version>1.9.58</version>
+                <version>1.0.0</version>
             </plugin>
         </plugins>
     </build>
