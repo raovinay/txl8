@@ -38,6 +38,11 @@ public class TxService extends Application<TxConfig> {
     }
     public static void main(String[] args) {
         try {
+            if(args.length==0){
+                args=new String[2];
+                args[0]="server";
+                args[1]="src/main/resources/config.yml";
+            }
             new TxService().run(args);
         } catch (Exception e) {
             //logger.error
