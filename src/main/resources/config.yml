@@ -1,0 +1,12 @@
+swagger:
+  resourcePackage: com.rao.translate.resource
+
+
+server:
+ applicationConnectors:
+  - type: http
+    port: 8090
+ adminConnectors:
+  - type: http
+    port: 8091
+ applicationContextPath: /
