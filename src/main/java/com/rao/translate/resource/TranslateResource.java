@@ -38,8 +38,20 @@ public class TranslateResource {
         @ApiResponse(code = 400, message = "Bad request"),
         @ApiResponse(code = 500, message = "Server error", response = String.class)
     })
-    public TranslateResponse translate(
-        TranslateRequest request) {
-        return new TranslateResponse("TEST");
+    public TranslateResponse translate(TranslateRequest request) {
+        Translate translate = createTranslateService();
+        TranslateOption srcLang = TranslateOption.sourceLanguage(request.getSource());
+        TranslateOption tgtLang = TranslateOption.targetLanguage(request.getTarget());
+
+        // Use translate `model` parameter with `base` and `nmt` options.
+        TranslateOption model = TranslateOption.model("nmt");
+
+        Translation translation = translate.translate(request.getQuery(), srcLang, tgtLang, model);
+
+        return new TranslateResponse(translation.getTranslatedText());
+    }
+
+    public static Translate createTranslateService() {
+        return TranslateOptions.newBuilder().build().getService();
     }
 }
